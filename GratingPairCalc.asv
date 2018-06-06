@@ -1,0 +1,10 @@
+%% Initialize Workspace
+clear;
+clf; 
+
+%% Write Equations
+% Temporal Redistribution of Spectral Components
+GDD = @(TauOut, TauIn) ((TauIn./TauOut).^2-1)*TauOut.^2/(4*ln(2))
+% Distance Between Grating Pair Given GDD
+GratDis = @(CapLam, LowLam, GDD, m, ThetaI) (2.*pi.*(2.998e8.^2).*...
+    (CapLam.^2).*GDD)/(-(m.^2).*(LowLam.^3).*(1-(-m.*LowLam./CapLam-sin(ThetaI))^2).^(-3/2))

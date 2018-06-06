@@ -1,0 +1,15 @@
+%% Configure Workspace
+clear;
+clf;
+
+%% Load Data and Split Variables
+MyData = importdata('Autocorrelator_9_5_V2.dat');
+Position = MyData(:,1);
+Intensity = MyData(:,2);
+FirstPos = find(min(Position) == Position);
+NewPosition = Position(FirstPos:end);
+NewIntensity = Intensity(FirstPos:end);
+
+%% Graph Data
+figure(1);
+plot(NewPosition, NewIntensity, 'r-');
